@@ -28,8 +28,8 @@ public class MovableBehaviour : MonoBehaviour {
         }
         else
         {
-            float dumpPosition = transform.position.x - (x > 0 ? collider.bounds.max.x : collider.bounds.min.x);
-            transform.position = new Vector2(transform.position.x + dumpPosition, transform.position.y + y);
+            float dumpPosition = rayXPosition - (rayXPosition - transform.position.x);
+            transform.position = new Vector2(dumpPosition, transform.position.y + y);
         }
        
     }
