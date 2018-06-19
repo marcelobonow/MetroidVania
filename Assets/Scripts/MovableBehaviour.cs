@@ -16,7 +16,7 @@ public class MovableBehaviour : MonoBehaviour {
 
     public void MoveAdd(float x, float y)
     {
-        float rayXPosition = x > 0 ? collider.bounds.max.x : collider.bounds.min.x;
+        float rayXPosition = x > 0 ? collider.bounds.min.x : collider.bounds.max.x;
         Ray ray = new Ray(new Vector3(rayXPosition, transform.position.y), new Vector3(x, y, 0));
         float maxDistance = Mathf.Max(Mathf.Abs(x), Mathf.Abs(y));
         RaycastHit RayCastHitInfo;
@@ -28,7 +28,9 @@ public class MovableBehaviour : MonoBehaviour {
         }
         else
         {
-            float dumpPosition = rayXPosition - (rayXPosition - transform.position.x);
+            float colliderHitDifference = RayCastHitInfo.transform.position.x - (x > 0 ? - RayCastHitInfo.collider.bounds.max.x : RayCastHitInfo.collider.bounds.min.x);
+            float playerColliderDifference = transform.position.x - (x > 0 ? - collider.bounds.max.x : collider.bounds.min.x);
+            float dumpPosition = RayCastHitInfo.transform.position.x + (colliderHitDifference + playerColliderDifference)+0.2f ;
             transform.position = new Vector2(dumpPosition, transform.position.y + y);
         }
        

@@ -8,6 +8,7 @@ public class PlayerControl : MonoBehaviour {
 
     [SerializeField] float speed;
     private float horizontalInput;
+    private float jumpInput;
 
     private void Awake()
     {
@@ -21,11 +22,19 @@ public class PlayerControl : MonoBehaviour {
     void Update () {
 
         horizontalInput = Input.GetAxis("Horizontal");
-        if(Mathf.Abs(horizontalInput) > 0.02)
+        jumpInput = Input.GetAxis("Jump");
+        if (Mathf.Abs(horizontalInput) > 0.02)
         {
-            behaviour.Move(horizontalInput * speed);
+            GetComponent<Rigidbody2D>().MovePosition(new Vector3((transform.position.x + horizontalInput * speed), transform.position.y, 0));
+            //behaviour.Move(horizontalInput * speed);
         }
-        
-
+        if(jumpInput > 0)
+        {
+            RaycastHit info;
+            if(Physics.Raycast(transform.position, Vector3.down, out info, 0.7f))
+            {
+                GetComponent<Rigidbody2D>().AddForce(Vector3.up * 100); 
+            }
+        }
 	}
 }
