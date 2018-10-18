@@ -8,6 +8,7 @@ public enum Events
 {
     HORIZONTAL_INPUT,
     VERTICAL_INPUT,
+    JUMP_INPUT,
 }
 
 

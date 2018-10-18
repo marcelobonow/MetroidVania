@@ -1,0 +1,10 @@
+{
+    "name": "MovementAssembly",
+    "references": [
+        "EventsAssembly"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

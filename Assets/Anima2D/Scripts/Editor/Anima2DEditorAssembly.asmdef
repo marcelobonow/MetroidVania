@@ -1,0 +1,10 @@
+{
+    "name": "Anima2DEditorAssembly",
+    "references": [
+        "Anima2DAssembly"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

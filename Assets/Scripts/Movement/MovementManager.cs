@@ -6,18 +6,22 @@ using UnityEngine;
 
 public class MovementManager : MonoBehaviour
 {
+    [SerializeField] private float speed = 15;
+    [SerializeField] private float jumpSpeed = 20;
     [SerializeField] private IMoveBehaviour moveBehaviour;
+
 
     private void Awake()
     {
         if (moveBehaviour == null)
         {
             moveBehaviour = gameObject.AddComponent<MoveBehaviour>();
-            moveBehaviour.Init(15, 20);
+            moveBehaviour.Init(speed, jumpSpeed);
         }
         moveBehaviour = GetComponent<MoveBehaviour>();
         EventManager.AddListener(Events.HORIZONTAL_INPUT, OnHorizontalInput);
         EventManager.AddListener(Events.VERTICAL_INPUT, OnVerticalInput);
+        EventManager.AddListener(Events.JUMP_INPUT, OnJumpInput);
     }
 
     private void OnHorizontalInput(object sender, object horizontalInput)
@@ -37,5 +41,10 @@ public class MovementManager : MonoBehaviour
             Debug.Log("Vertical: " + input);
             moveBehaviour.SetVertical((float)input);
         }
+    }
+    private void OnJumpInput(object Sender, object jumpInput)
+    {
+        Debug.Log("Jump");
+        moveBehaviour.Jump();
     }
 }

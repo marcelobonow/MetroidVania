@@ -1,0 +1,10 @@
+{
+    "name": "Anima2DExamplesAssembly",
+    "references": [
+        "Anima2DAssembly"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

@@ -11,6 +11,7 @@ public interface IMoveBehaviour
     /// <param name="y">input vertical</param>
     void SetHorizontal(float x);
     void SetVertical(float y);
+    void Jump();
 
     void Init(float speed, float jumpForce);
 }

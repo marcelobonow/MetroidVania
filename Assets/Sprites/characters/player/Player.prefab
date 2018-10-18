@@ -330,9 +330,13 @@ GameObject:
   m_Component:
   - component: {fileID: 224109699529114954}
   - component: {fileID: 95293190702846630}
+  - component: {fileID: 114966264472826150}
+  - component: {fileID: 114186245307623198}
+  - component: {fileID: 50140509942986422}
+  - component: {fileID: 61194918441728744}
   m_Layer: 5
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -889,7 +893,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1555639192947104}
   m_LocalRotation: {x: 0, y: 0, z: -0.9969148, w: -0.07849138}
-  m_LocalPosition: {x: -0.5317408, y: 0.40316007, z: 0}
+  m_LocalPosition: {x: -0.5317408, y: 0.4031601, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4977194844558528}
@@ -915,13 +919,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1687213977558870}
-  m_LocalRotation: {x: 0, y: 0, z: -0.008371741, w: 0.99996495}
+  m_LocalRotation: {x: 0, y: 0, z: 0.009196062, w: 0.99995774}
   m_LocalPosition: {x: 0.2886176, y: -0.000000008381903, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4357736631580190}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.95900005}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.054}
 --- !u!4 &4732641908719174
 Transform:
   m_ObjectHideFlags: 1
@@ -1046,6 +1050,51 @@ Transform:
   m_Father: {fileID: 4597900568825478}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.407}
+--- !u!50 &50140509942986422
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614404951461458}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 80
+  m_LinearDrag: 0.25
+  m_AngularDrag: 0.6
+  m_GravityScale: 8
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!61 &61194918441728744
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614404951461458}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -12.8}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 222.84}
+  m_EdgeRadius: 0
 --- !u!95 &95293190702846630
 Animator:
   serializedVersion: 3
@@ -1152,7 +1201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.0702553
+  m_Length: 1.0702554
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4477961593248114}
   m_AttachedIK: {fileID: 0}
@@ -1180,6 +1229,23 @@ MonoBehaviour:
   - {fileID: 4834319813342930}
   - {fileID: 4357736631580190}
   - {fileID: 4597900568825478}
+--- !u!114 &114186245307623198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614404951461458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b196e7c11ea4d4bb2dc3321594543e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  jumpSpeed: 0
+  rigidBody: {fileID: 50140509942986422}
+  playerAnimator: {fileID: 95293190702846630}
+  playerBase: {fileID: 0}
+  turnThereshold: 0.05
 --- !u!114 &114186554517379472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1192,7 +1258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.0022186
+  m_Length: 1.0022185
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4186678859790092}
   m_AttachedIK: {fileID: 0}
@@ -1262,7 +1328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.9247169
+  m_Length: 0.9247171
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4357736631580190}
   m_AttachedIK: {fileID: 0}
@@ -1278,7 +1344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.4240696
+  m_Length: 1.4240694
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4832907543993592}
   m_AttachedIK: {fileID: 0}
@@ -1294,7 +1360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.55379295
+  m_Length: 0.55379283
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4834319813342930}
   m_AttachedIK: {fileID: 0}
@@ -1386,7 +1452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.9989999
+  m_Length: 0.9989998
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4083320453056646}
   m_AttachedIK: {fileID: 0}
@@ -1484,7 +1550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.6000453
+  m_Length: 0.60004526
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4170992807177430}
   m_AttachedIK: {fileID: 0}
@@ -1564,7 +1630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.28861818
+  m_Length: 0.2886179
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4679160411693440}
   m_AttachedIK: {fileID: 0}
@@ -1648,6 +1714,19 @@ MonoBehaviour:
   - {fileID: 4834319813342930}
   - {fileID: 4357736631580190}
   - {fileID: 4679160411693440}
+--- !u!114 &114966264472826150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614404951461458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d16a0d7778a06e479d1a5f4386a5e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 12
+  jumpSpeed: 20
 --- !u!114 &114967038133650076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1660,7 +1739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.4338945
+  m_Length: 1.4338944
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4977194844558528}
   m_AttachedIK: {fileID: 0}
