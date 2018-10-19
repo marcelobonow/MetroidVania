@@ -49,7 +49,7 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
     public void Jump()
     {
         ///TODO: Jump enquanto tiver pressionando o botão
-        RaycastHit2D rayCastInfo = Physics2D.Raycast(playerBase.transform.position, Vector2.down, 4f);
+        RaycastHit2D rayCastInfo = Physics2D.Raycast(playerBase.transform.position, Vector2.down, 1f);
         if (rayCastInfo.collider != null)
         {
             if (rayCastInfo.collider.gameObject.tag == "Ground")
