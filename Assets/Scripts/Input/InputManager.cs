@@ -12,10 +12,8 @@ public class InputManager : MonoBehaviour
         var y = Math.Round(Input.GetAxis("Vertical"), 4);
         var jump = Input.GetButtonDown("Jump");
 
-        if (x != 0)
-            EventManager.OnEvent(this, x, Events.HORIZONTAL_INPUT);
-        if (y != 0)
-            EventManager.OnEvent(this, y, Events.VERTICAL_INPUT);
+        EventManager.OnEvent(this, x, Events.HORIZONTAL_INPUT);
+        EventManager.OnEvent(this, y, Events.VERTICAL_INPUT);
         if (jump)
             EventManager.OnEvent(this, null, Events.JUMP_INPUT);
     }
