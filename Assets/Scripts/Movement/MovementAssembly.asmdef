@@ -1,7 +1,8 @@
 {
     "name": "MovementAssembly",
     "references": [
-        "EventsAssembly"
+        "EventsAssembly",
+        "DataAssembly"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
