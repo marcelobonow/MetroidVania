@@ -15,6 +15,9 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
     private Rigidbody2D rigidBody;
     private Animator playerAnimator;
 
+    private bool crunch = false;
+    private bool inAir = false;
+
     public void Init(CharacterMovementData movementData)
     {
         this.movementData = movementData;
@@ -28,11 +31,19 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
             playerAnimator = GetComponent<Animator>();
         if (playerBase == null)
             playerBase = gameObject;
+
+        EventManager.AddListener(Events.PLAYER_IN_AIR, OnAir);
+    }
+
+    private void Update()
+    {
+        EventManager.OnEvent(this, rigidBody.velocity.y, Events.PLAYER_IN_AIR);
     }
 
     public void SetHorizontal(float x)
     {
-        rigidBody.velocity = new Vector2(x * movementData.speed, rigidBody.velocity.y);
+        var movementSpeed = crunch ? movementData.cruchSpeed : movementData.speed;
+        rigidBody.velocity = new Vector2(x * movementSpeed, rigidBody.velocity.y);
 
         Vector3 oldRotation = playerBase.transform.rotation.eulerAngles;
         if (x < -turnThereshold)
@@ -42,7 +53,21 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
             oldRotation.y = 0;
         playerBase.transform.rotation = Quaternion.Euler(oldRotation);
 
-        playerAnimator.SetFloat("Speed", Mathf.Abs(x));
+        playerAnimator.SetFloat("HorizontalSpeed", Mathf.Abs(x));
+    }
+    public void SetVertical(float y)
+    {
+        if (!crunch && y < 0)
+        {
+            crunch = true;
+            playerAnimator.SetBool("Crunch", true);
+        }
+        if (crunch && y >= 0)
+        {
+            crunch = false;
+            playerAnimator.SetBool("Crunch", false);
+        }
+
     }
 
     public void Jump()
@@ -58,5 +83,12 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
         }
     }
 
-
+    private void OnAir(object sender, object verticalSpeed)
+    {
+        if (verticalSpeed is float)
+        {
+            var speed = (float)verticalSpeed;
+            playerAnimator.SetFloat("VerticalSpeed", (float)speed);
+        }
+    }
 }

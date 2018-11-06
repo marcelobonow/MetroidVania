@@ -20,6 +20,7 @@ public class MovementManager : MonoBehaviour
         EventManager.AddListener(Events.HORIZONTAL_INPUT, OnHorizontalInput);
         EventManager.AddListener(Events.VERTICAL_INPUT, OnVerticalInput);
         EventManager.AddListener(Events.JUMP_INPUT, OnJumpInput);
+        EventManager.AddListener(Events.PLAYER_IN_AIR, OnPlayerInAir);
     }
 
     private void OnHorizontalInput(object sender, object horizontalInput)
@@ -38,11 +39,20 @@ public class MovementManager : MonoBehaviour
         {
             var input = (double)verticalInput;
             Debug.Log("Vertical: " + input);
+            moveBehaviour.SetVertical((float)input);
         }
     }
     private void OnJumpInput(object Sender, object jumpInput)
     {
         Debug.Log("Jump");
         moveBehaviour.Jump();
+    }
+    private void OnPlayerInAir(object sender, object verticalSpeed)
+    {
+        if (verticalSpeed is double)
+        {
+            var input = (double)verticalSpeed;
+            Debug.Log("Vertical Speed: " + verticalSpeed);
+        }
     }
 }

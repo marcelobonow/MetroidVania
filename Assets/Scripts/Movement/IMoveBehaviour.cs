@@ -6,6 +6,7 @@ public interface IMoveBehaviour
 {
     void Init(CharacterMovementData data);
     void SetHorizontal(float x);
+    void SetVertical(float y);
     void Jump();
 
 }

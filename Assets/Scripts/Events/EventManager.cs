@@ -6,9 +6,10 @@ using UnityEngine.Events;
 
 public enum Events
 {
-    HORIZONTAL_INPUT,
-    VERTICAL_INPUT,
-    JUMP_INPUT,
+    HORIZONTAL_INPUT, ///Double
+    VERTICAL_INPUT, /// Double
+    JUMP_INPUT, ///Null
+    PLAYER_IN_AIR, ///Float
 }
 
 
