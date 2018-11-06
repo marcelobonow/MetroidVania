@@ -38,6 +38,7 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
     private void Update()
     {
         EventManager.OnEvent(this, rigidBody.velocity.y, Events.PLAYER_IN_AIR);
+        inAir = Math.Abs(rigidBody.velocity.y) > 0;
     }
 
     public void SetHorizontal(float x)
@@ -57,12 +58,12 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
     }
     public void SetVertical(float y)
     {
-        if (!crunch && y < 0)
+        if (!crunch && y < 0 && !inAir)
         {
             crunch = true;
             playerAnimator.SetBool("Crunch", true);
         }
-        if (crunch && y >= 0)
+        if (crunch && y >= 0 && !inAir)
         {
             crunch = false;
             playerAnimator.SetBool("Crunch", false);

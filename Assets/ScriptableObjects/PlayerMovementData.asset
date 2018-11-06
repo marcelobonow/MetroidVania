@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: PlayerMovementData
   m_EditorClassIdentifier: 
   speed: 8
-  cruchSpeed: 3
-  jumpSpeed: 14
+  cruchSpeed: 0
+  jumpSpeed: 16
