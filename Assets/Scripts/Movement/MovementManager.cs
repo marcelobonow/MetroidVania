@@ -12,10 +12,9 @@ public class MovementManager : MonoBehaviour
 
     private void Awake()
     {
+        moveBehaviour = GetComponent<MoveBehaviour>();
         if (moveBehaviour == null)
             moveBehaviour = gameObject.AddComponent<MoveBehaviour>();
-        else
-            moveBehaviour = GetComponent<MoveBehaviour>();
         moveBehaviour.Init(playerMovementData);
         EventManager.AddListener(Events.HORIZONTAL_INPUT, OnHorizontalInput);
         EventManager.AddListener(Events.VERTICAL_INPUT, OnVerticalInput);

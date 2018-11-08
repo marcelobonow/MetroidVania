@@ -21,6 +21,8 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
     public void Init(CharacterMovementData movementData)
     {
         this.movementData = movementData;
+
+        rigidBody.gravityScale = movementData.fallSpeed;
     }
 
     private void Awake()
@@ -43,8 +45,7 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
 
     public void SetHorizontal(float x)
     {
-        var movementSpeed = crunch ? movementData.cruchSpeed : movementData.speed;
-        rigidBody.velocity = new Vector2(x * movementSpeed, rigidBody.velocity.y);
+        rigidBody.velocity = new Vector2(x * movementData.speed, rigidBody.velocity.y);
 
         Vector3 oldRotation = playerBase.transform.rotation.eulerAngles;
         if (x < -turnThereshold)
@@ -81,6 +82,7 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
             if (rayCastInfo.collider.gameObject.tag == "Ground")
             {
                 rigidBody.velocity = Vector2.up * movementData.jumpSpeed;
+                Debug.LogWarning("Pulo  ao tempo: " + Time.time);
             }
         }
     }
@@ -91,6 +93,8 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
         {
             var speed = (float)verticalSpeed;
             playerAnimator.SetFloat("VerticalSpeed", (float)speed);
+            if (speed < 0 || (!InputManager.IsJumpPressed() && speed > 0))
+                rigidBody.velocity += Vector2.up * Physics2D.gravity.y * (movementData.fallMultiplier - 1) * movementData.fallSpeed * Time.deltaTime;
         }
     }
 }
