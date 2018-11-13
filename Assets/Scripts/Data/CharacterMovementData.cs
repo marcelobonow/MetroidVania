@@ -6,6 +6,7 @@ using UnityEngine;
 public class CharacterMovementData : ScriptableObject
 {
     public float speed;
+    public float turnPoint = 0.05f;
     public float jumpSpeed;
     public float fallSpeed;
     public float fallMultiplier;

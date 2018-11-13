@@ -5,10 +5,6 @@ using UnityEngine;
 
 public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
 {
-
-    ///TODO: Marcelo: passar para classe de controle?
-    [SerializeField] private float turnThereshold;
-
     private CharacterMovementData movementData;
 
     private GameObject playerBase;
@@ -48,10 +44,10 @@ public class MoveBehaviour : MonoBehaviour, IMoveBehaviour
         rigidBody.velocity = new Vector2(x * movementData.speed, rigidBody.velocity.y);
 
         Vector3 oldRotation = playerBase.transform.rotation.eulerAngles;
-        if (x < -turnThereshold)
+        if (x < -movementData.turnPoint)
             oldRotation.y = 180;
 
-        else if (x > turnThereshold)
+        else if (x > movementData.turnPoint)
             oldRotation.y = 0;
         playerBase.transform.rotation = Quaternion.Euler(oldRotation);
 

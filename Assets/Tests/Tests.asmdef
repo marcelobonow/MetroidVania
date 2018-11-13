@@ -1,0 +1,13 @@
+{
+    "name": "Tests",
+    "references": [
+        "MovementAssembly",
+        "DataAssembly"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

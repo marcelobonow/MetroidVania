@@ -54,4 +54,10 @@ public class MovementManager : MonoBehaviour
             Debug.Log("Vertical Speed: " + verticalSpeed);
         }
     }
+
+    public bool HasData()
+    {
+        return playerMovementData != null && moveBehaviour != null;
+    }
+
 }

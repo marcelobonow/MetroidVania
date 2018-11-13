@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: PlayerMovementData
   m_EditorClassIdentifier: 
   speed: 8
+  turnPoint: 0.05
   jumpSpeed: 16
   fallSpeed: 5
   fallMultiplier: 2
